@@ -22,6 +22,25 @@ struct DrawView: UIViewRepresentable {
         containerView.layer.addSublayer(redLeftLegUp())
         containerView.layer.addSublayer(redLeftLegDown())
         view.addSubview(containerView)
+        
+        let imageView = UIImageView(frame: CGRect(x: 130, y: 500, width:50 , height: 60))
+        imageView.image = UIImage(named: "Thunder")
+        view.addSubview(imageView)
+        
+        let imageView2 = UIImageView(frame: CGRect(x: 160, y: 280, width:50 , height: 60))
+        imageView2.image = UIImage(named: "Thunder")
+        view.addSubview(imageView2)
+        
+        UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+
+            imageView.layer.setAffineTransform(CGAffineTransform(scaleX: 1.2,
+                    y: 1.2).concatenating(CGAffineTransform(translationX: -10, y:
+                    -10)))
+            imageView2.layer.setAffineTransform(CGAffineTransform(scaleX: 1.2,
+                    y: 1.2).concatenating(CGAffineTransform(translationX: 10, y:
+                    0)))
+        }, completion: {_ in })
+        
         return view
     }
     
@@ -233,3 +252,5 @@ func redLeftLegDown() -> CAShapeLayer {
     layer.lineWidth = 1
     return layer
 }
+
+
